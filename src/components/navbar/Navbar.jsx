@@ -168,6 +168,7 @@ export default function Navbar() {
                   justifyContent="flex-end"
                   spaceX="6"
                 >
+                    {user?.user?.email === 'sanjeevcse2k23@gmail.com' ?
                   <Link
                     to="/allproducts"
                     // fontSize="sm"
@@ -176,7 +177,8 @@ export default function Navbar() {
                     _hover={{ color: "pink.600" }}
                   >
                     All Products
-                  </Link>
+                  </Link>: ""}
+
                   <Link
                     to="/order"
                     fontSize="sm"

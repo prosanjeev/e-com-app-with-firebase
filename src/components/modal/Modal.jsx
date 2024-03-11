@@ -1,12 +1,34 @@
-import { Button, Modal as ChakraModal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, Input, FormControl, FormLabel } from '@chakra-ui/react';
-import {  useState } from 'react';
+import {
+  Button,
+  Modal as ChakraModal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  Input,
+  FormControl,
+  FormLabel,
+} from "@chakra-ui/react";
+import { useState } from "react";
 
-export default function Modal({ name, address, pincode, phoneNumber, setName, setAddress, setPincode, setPhoneNumber, buyNow }) {
+export default function Modal({
+  name,
+  address,
+  pincode,
+  phoneNumber,
+  setName,
+  setAddress,
+  setPincode,
+  setPhoneNumber,
+  buyNow,
+}) {
   let [isOpen, setIsOpen] = useState(false);
 
   function closeModal() {
     setIsOpen(false);
-  } 
+  }
 
   function openModal() {
     setIsOpen(true);
@@ -18,11 +40,11 @@ export default function Modal({ name, address, pincode, phoneNumber, setName, se
         onClick={openModal}
         w="full"
         // bg="violet.600"
-        colorScheme='orange'
+        colorScheme="orange"
         py="2"
         rounded="lg"
         fontWeight="bold"
-        _hover={{ bg: 'violet.800' }}
+        _hover={{ bg: "violet.800" }}
       >
         Buy Now
       </Button>
@@ -36,7 +58,8 @@ export default function Modal({ name, address, pincode, phoneNumber, setName, se
             <FormControl>
               <FormLabel htmlFor="name">Enter Full Name</FormLabel>
               <Input
-              value={name} onChange={(e)=>setName(e.target.value)}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 type="text"
                 id="name"
                 border="1px"
@@ -48,7 +71,8 @@ export default function Modal({ name, address, pincode, phoneNumber, setName, se
             <FormControl mt="4">
               <FormLabel htmlFor="address">Enter Full Address</FormLabel>
               <Input
-              value={address} onChange={(e)=>setAddress(e.target.value)}
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
                 type="text"
                 id="address"
                 border="1px"
@@ -60,7 +84,8 @@ export default function Modal({ name, address, pincode, phoneNumber, setName, se
             <FormControl mt="4">
               <FormLabel htmlFor="pincode">Enter Pincode</FormLabel>
               <Input
-              value={pincode} onChange={(e)=>setPincode(e.target.value)} 
+                value={pincode}
+                onChange={(e) => setPincode(e.target.value)}
                 type="text"
                 id="pincode"
                 border="1px"
@@ -72,7 +97,8 @@ export default function Modal({ name, address, pincode, phoneNumber, setName, se
             <FormControl mt="4">
               <FormLabel htmlFor="mobileNumber">Enter Mobile Number</FormLabel>
               <Input
-              value={phoneNumber} onChange={(e)=>setPhoneNumber(e.target.value)}
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
                 type="text"
                 id="mobileNumber"
                 border="1px"
@@ -84,13 +110,16 @@ export default function Modal({ name, address, pincode, phoneNumber, setName, se
           </ModalBody>
           <ModalFooter>
             <Button
-              onClick={()=>{buyNow(); closeModal()}}
-            //   bg="violet.600"
-            colorScheme='orange'
+              onClick={() => {
+                buyNow();
+                closeModal();
+              }}
+              //   bg="violet.600"
+              colorScheme="orange"
               color="white"
-              _hover={{ bg: 'violet.800' }}
-            //   mr={3}
-              w='full'
+              _hover={{ bg: "violet.800" }}
+              //   mr={3}
+              w="full"
             >
               Order Now
             </Button>

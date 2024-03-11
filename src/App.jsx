@@ -19,6 +19,8 @@ import AddProduct from "./pages/admin/pages/AddProduct";
 import UpdateProduct from "./pages/admin/pages/UpdateProduct";
 import AllProduct from "./pages/allproducts/AllProducts";
 import AllOrder from "./pages/order/AllOrder";
+import AdminPrivateRoute from "./components/privateRoute/AdminPrivateRoute";
+import UserPrivateRoute from "./components/privateRoute/UserPrivateRoute";
 
 const App = () => {
   return (
@@ -27,27 +29,26 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route path="" element={<Home />} />
-            <Route
-              path="/order"
-              element={
-                <ProtectedRoutes>
-                  <Order />
-                </ProtectedRoutes>
-              }
-            />
-            <Route path="/allorder" element={<AllOrder/>} />
-            <Route path="/cart" element={<Cart />} />
 
-            {/* <Route path="/dashboard" element={ <ProtectedRoutesForAdmin><Dashboard /></ProtectedRoutesForAdmin> } /> */}
-            <Route path="/dashboard" element={<Dashboard />} />
+            <Route element={<AdminPrivateRoute />}>
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/allproducts" element={<AllProduct />} />
+              <Route path="/add-product" element={<AddProduct />} />
+              <Route path="/update-product" element={<UpdateProduct />} />
+              <Route path="/allorder" element={<AllOrder />} />
+            </Route>
+
+            <Route element={<UserPrivateRoute />}>
+              <Route path="/order" element={<Order />} />
+              <Route path="/cart" element={<Cart />} />
+            </Route>
+
+          
             <Route path="/*" element={<NoPage />} />
             <Route path="/productinfo/:id" element={<ProductInfo />} />
-            <Route path="/add-product" element={<AddProduct />} />
-            <Route path="/update-product" element={<UpdateProduct />} />
-            <Route path="/allproducts" element={<AllProduct />} />
+            <Route path="/signup*" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
           </Route>
-          <Route path="/signup*" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
         </Routes>
       </Router>
     </MyState>

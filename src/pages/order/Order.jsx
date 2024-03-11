@@ -1,16 +1,15 @@
-import { Box, Flex, Image, Text } from '@chakra-ui/react'
-import Layout from '../../components/layout/Layout'
-import Loader from '../../components/loader/Loader'
-import { useContext } from 'react'
-import MyContext from '../../context/data/myContext'
+import { Box, Divider, Flex, Image, Text } from "@chakra-ui/react";
+import Loader from "../../components/loader/Loader";
+import { useContext } from "react";
+import MyContext from "../../context/data/myContext";
 
 function Order() {
-  const userid = JSON.parse(localStorage.getItem('currentUser')).user.uid
-  const context = useContext(MyContext)
-  const { mode, loading, order } = context
+  const userid = JSON.parse(localStorage.getItem("user")).user.uid;
+  const context = useContext(MyContext);
+  const { mode, loading, order } = context;
 
   return (
-    <Layout>
+    <>
       {loading && <Loader />}
       {order.length > 0 ? (
         <Flex direction="column" align="center" pt="10">
@@ -23,23 +22,50 @@ function Order() {
                 mx="auto"
                 p="6"
                 shadow="md"
-                bg={mode === 'dark' ? '#282c34' : 'white'}
-                color={mode === 'dark' ? 'white' : ''}
+                bg={mode === "dark" ? "#282c34" : "white"}
+                color={mode === "dark" ? "white" : ""}
                 rounded="lg"
                 mb="6"
                 w="full"
               >
                 {order.cartItems.map((item) => (
-                  <Flex key={item.id} justify="space-between" align="center" mb="6">
-                    <Image src={item.imageUrl} alt="product-image" w="40" rounded="lg" />
+                  <Flex
+                    key={item.id}
+                    justify="space-between"
+                    align="center"
+                    mb="6"
+                    p={10}
+                    border='1px solid gray'
+                    borderRadius={10}
+                  >
+                    <Image
+                      src={item.imageUrl}
+                      alt="product-image"
+                      w="20"
+                      rounded="lg"
+                    />
                     <Box ml="4" flex="1">
-                      <Text fontSize="lg" fontWeight="bold" color={mode === 'dark' ? 'white' : 'gray.900'}>
+                      <Text
+                        fontSize="lg"
+                        fontWeight="bold"
+                        color={mode === "dark" ? "white" : "gray.900"}
+                      >
                         {item.title}
                       </Text>
-                      <Text fontSize="sm" color={mode === 'dark' ? 'white' : 'gray.700'}>{item.description}</Text>
-                      <Text fontSize="sm" color={mode === 'dark' ? 'white' : 'gray.700'}>{item.price}</Text>
-                    </Box>
-                  </Flex>
+                      <Text
+                        fontSize="sm"
+                        color={mode === "dark" ? "white" : "gray.700"}
+                      >
+                       {item.description.length > 250 ? `${item.description.substring(0, 250)}...` : item.description}
+                      </Text>
+                      <Text
+                        fontSize="lg"
+                        color={mode === "dark" ? "white" : "gray.700"}
+                      >
+                        ₹ {item.price}
+                      </Text>
+                    </Box>                   
+                  </Flex>                
                 ))}
               </Box>
             ))}
@@ -49,8 +75,8 @@ function Order() {
           Not Ordered
         </Text>
       )}
-    </Layout>
-  )
+    </>
+  );
 }
 
-export default Order
+export default Order;

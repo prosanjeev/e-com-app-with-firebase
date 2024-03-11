@@ -8,9 +8,9 @@ import {
 } from "@chakra-ui/react";
 import AllOrder from "../../order/AllOrder";
 import AllProduct from "../../allproducts/AllProducts";
+import AllUsers from "../../user/AllUsers";
 
 const DashboardTab = () => {
-
   return (
     <>
       <Tabs variant="enclosed">
@@ -22,14 +22,16 @@ const DashboardTab = () => {
         <TabPanels>
           <TabPanel>
             <Heading>All Products</Heading>
-           <AllProduct/>
+            <AllProduct />
           </TabPanel>
           <TabPanel>
-          <AllOrder />
+            <AllOrder />
+          </TabPanel>
+          <TabPanel>
+            <AllUsers />
           </TabPanel>
         </TabPanels>
       </Tabs>
-
     </>
   );
 };
